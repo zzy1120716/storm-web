@@ -24,7 +24,7 @@
         <input type="button" class="btn" id='default' value="默认样式测距" style='margin-right: 1rem;'/>
     </div>
 </div>
-<script src="https://webapi.amap.com/maps?v=1.4.14&key=45cee1fce3ab25db55c78cb468262a1c&plugin=AMap.RangingTool"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.14&key=xxx&plugin=AMap.RangingTool"></script>
 <%--<script src="https://a.amap.com/jsapi_demos/static/resource/heatmapData.js"></script>--%>
 <script>
     var map = new AMap.Map("container", {

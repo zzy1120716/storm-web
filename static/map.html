@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8" %>
+<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -25,23 +25,50 @@
     </div>
 </div>
 <script src="https://webapi.amap.com/maps?v=1.4.14&key=xxx&plugin=AMap.RangingTool"></script>
+<script src="https://a.amap.com/jsapi_demos/static/resource/heatmapData.js"></script>
 <script>
     var map = new AMap.Map("container", {
         resizeEnable: true,
         center: [116.418261, 39.921984],
         zoom: 11
     });
+    
+    //map.setFeatures("road");    // 单一种类要素显示
+    //map.setFeatures(['road', 'building'])   // 多个种类要素显示
 
-    map.plugin(["AMap.ToolBar"],function(){
-        //加载工具条
-        var tool = new AMap.ToolBar();
-        map.addControl(tool);
-    });
+    // 测量距离
+    // map.plugin(['Amap.MouseTool'], function(){
+    //     var mousetool = new Amap.MouseTool(map);
+    //     mousetool.rule();
+    // });
+    //默认样式
+    //var ruler1 = new AMap.RangingTool(map);
+    //启用默认样式测距
+    // document.getElementById('default').onclick=function(){
+    //     ruler1.turnOn();
+    // }
 
-    // 坐标点
-    var points = ${data_json};
+    // 工具条
+    // map.plugin(["AMap.ToolBar"],function(){
+    //     //加载工具条
+    //     var tool = new AMap.ToolBar();
+    //     map.addControl(tool);    
+    // });
 
-    console.log(points);
+// var map = new AMap.Map('container', {
+//     resizeEnable: true,
+//     rotateEnable:true,
+//     pitchEnable:true,
+//     zoom: 17,
+//     pitch:80,
+//     rotation:-15,
+//     viewMode:'3D',//开启3D视图,默认为关闭
+//     buildingAnimation:true,//楼块出现是否带动画
+    
+//     expandZoomRange:true,
+//     zooms:[3,20],
+//     center:[116.333926,39.997245]
+// });
 
     var heatmap;
     map.plugin(["AMap.Heatmap"], function () {
@@ -59,11 +86,10 @@
             }
              */
         });
-
+        //设置数据集：该数据为北京部分“公园”数据
         heatmap.setDataSet({
-            data: points,
-            //max: 100
-            max: 1
+            data: heatmapData,
+            max: 100
         });
     });
 
